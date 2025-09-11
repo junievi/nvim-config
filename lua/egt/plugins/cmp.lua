@@ -54,11 +54,11 @@ return {
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
 					--  completions whenever it has completion options available.
-					["<C-Space>"] = cmp.mapping.complete({}),
+					["<C-,>"] = cmp.mapping.complete({}),
 
 					["<C-i>"] = cmp.mapping(function(fallback)
 						if luasnip.choice_active() then
-							luasnip.change_choice()
+							luasnip.change_choice(1)
 						else
 							fallback()
 						end

@@ -7,6 +7,7 @@ return {
 			--
 			-- require("mini.starter").setup({})
 			--
+			require("mini.icons").setup()
 			-- Better Around/Inside textobjects
 			--
 			-- Examples:

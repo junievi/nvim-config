@@ -8,6 +8,10 @@ return { -- I keep these at the top level because they're important/too small fo
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			require("catppuccin").setup({
+				float = {
+					solid = true,
+					transparent = true,
+				},
 				transparent = false,
 				background = {
 					light = "latte",

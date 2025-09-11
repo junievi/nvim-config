@@ -14,7 +14,6 @@ return {
 			vscode.json_decode = require("json5").parse
 
 			vim.keymap.set("n", "<F1>", function()
-				vscode.load_launchjs()
 				dap.continue()
 			end, { desc = "DAP Continue" })
 			vim.keymap.set("n", "<F2>", function()
@@ -29,9 +28,6 @@ return {
 			vim.keymap.set("n", "<F5>", function()
 				dap.close()
 			end, { desc = "DAP Close" })
-			vim.keymap.set("n", "<F6>", function()
-				require("dap.ext.vscode").load_launchjs()
-			end, { desc = "load from launch.json" })
 			vim.keymap.set("n", "<leader>b", function()
 				dap.toggle_breakpoint()
 			end, { desc = "toggle [b]reakpoint" })

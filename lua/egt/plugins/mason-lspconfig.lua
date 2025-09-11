@@ -6,6 +6,7 @@ return {
 				exclude = { "ts_ls", "rust_analyzer", "htmx" },
 			},
 			ensure_installed = {
+				"sqlls",
 				"gopls",
 				"templ",
 				"htmx",

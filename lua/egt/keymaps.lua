@@ -9,8 +9,12 @@ set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 set("n", "<leader>pv", "<cmd>Oil<CR>", { desc = "open file tree" })
 
 -- Diagnostic keymaps
-set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+set("n", "[d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous [D]iagnostic message" })
+set("n", "]d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next [D]iagnostic message" })
 set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
@@ -32,7 +36,10 @@ set("x", "<leader>p", [["_dP]], { desc = "[P]aste and preserve buffer" })
 set({ "n", "v" }, "<leader>y", [["+y]], { desc = "[Y]ank line into OS clipboard" })
 set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank to end of line into OS clipboard" })
 
+-- delete to null buffer, optionally enter insert mode
 set({ "n", "v" }, "<leader>d", [["_d]], { desc = "[D]elete to null buffer" })
+set({ "n", "v" }, "<leader>c", [["_c]], { desc = "delete to null buffer and enter insert" })
+
 -- goto last buffer
 set("n", "<leader>lb", "<cmd>b#<CR>", { desc = "goto [L]ast [B]uffer" })
 
@@ -62,6 +69,6 @@ set(
 	{ desc = "[s]ubstitute current word under cursor" }
 )
 -- add executable permissions to current buffer
-set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "make current file e[X]ecutable" })
+set("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { desc = "make current file e[X]ecutable" })
 -- source the current file
 set("n", "<leader>rc", "<cmd>source %<CR>", { desc = "[R]eload [C]urrent file" })

@@ -7,7 +7,7 @@ return {
 			{
 				"<leader>f",
 				function()
-					require("lua.egt.plugins.conform").format({ async = true })
+					require("conform").format({ async = true })
 				end,
 				mode = "",
 				desc = "[F]ormat Buffer",
@@ -25,14 +25,18 @@ return {
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
-				templ = { "templ", "gofmt", "goimport", stop_after_first = true },
-				go = { "gofmt", "goimport", stop_after_first = true },
+				templ = { "templ", "gofmt", stop_after_first = true },
+				go = { "gofmt", stop_after_first = true },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 				typescript = { "prettierd", "prettier", stop_after_first = true },
-				yaml = { "yamllint" },
+				json = { "prettierd", "prettier", "jq", stop_after_first = true },
+				yaml = { "yamllint", "actionlint", stop_after_first = true },
+				rust = { "rustfmt", "dprint", stop_after_first = true },
+				toml = { "dprint" },
+				terraform = { "terraform_fmt" },
 			},
 			formatters = {
 				shfmt = {

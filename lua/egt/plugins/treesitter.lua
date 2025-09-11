@@ -2,6 +2,8 @@ return {
 
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
+		branch = "master",
 		build = ":TSUpdate",
 		config = function()
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -16,6 +18,11 @@ return {
 					"vimdoc",
 					"hcl",
 					"terraform",
+					"go",
+					"typescript",
+					"javascript",
+					"markdown",
+					"markdown_inline",
 				},
 				-- Autoinstall languages that are not installed
 				auto_install = true,
