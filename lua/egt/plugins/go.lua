@@ -8,11 +8,14 @@ return {
 		},
 		lazy = true,
 		ft = { "go", "gomod" },
-		config = function()
-			require("go").setup({
-				gofmt = "gofmt",
-			})
+		opts = function()
+			require("go").setup(opts)
+			return {
+				-- lsp_keymaps = false,
+				-- other options
+			}
 		end,
+		event = { "CmdLineEnter" },
 		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 	},
 }

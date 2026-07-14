@@ -14,10 +14,11 @@ vim.keymap.set("n", "<leader>tc", "<Cmd>TSToolsRenameFile<CR>", { desc = "[T]ype
 
 dap.adapters["pwa-node"] = {
 	type = "server",
+	host = "127.0.0.1",
 	port = "${port}",
 	executable = {
 		command = "js-debug-adapter",
-		args = { "${port}" },
+		args = { "${port}", "127.0.0.1" },
 	},
 }
 
@@ -65,6 +66,18 @@ for _, language in ipairs({ "typescript", "javascript" }) do
 			cwd = "${workspaceFolder}",
 			console = "integratedTerminal",
 			internalConsoleOptions = "neverOpen",
+		},
+		{
+			type = "pwa-node",
+			request = "launch",
+			name = "Launch Test Program (pwa-node with vitest)",
+			cwd = "${workspaceFolder}",
+			program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+			args = { "--inspect-brk", "--no-file-parallelism", "run", "${file}" },
+			autoAttachChildProcesses = true,
+			smartStep = true,
+			console = "integratedTerminal",
+			skipFiles = { "<node_internals>/**", "node_modules/**" },
 		},
 	}
 end
